@@ -8,26 +8,28 @@ import { Profile } from "../components/Profile";
 import { ChallengeBox } from "../components/ChallengeBox";
 
 import styles from '../styles/pages/Home.module.css';
+import { CountdownProvider } from '../context/CountdownContext';
 
 export default function Home() {
   return (
-    <div className= {styles.container}>
-
+    <div className={styles.container}>
       <Head>
         <title>Inicio | move.it</title>
       </Head>
-    <ExperienceBar/>
+      <ExperienceBar />
 
-    <section>
-      <div>
-        <Profile />
-        <CompletedChallenges />
-        <Countdown />
-      </div>
-      <div>
-        <ChallengeBox />
-      </div>
-    </section>
-  </div>
-  )
+      <CountdownProvider>
+        <section>
+          <div>
+            <Profile />
+            <CompletedChallenges />
+            <Countdown />
+          </div>
+          <div>
+            <ChallengeBox />
+          </div>
+        </section>
+      </CountdownProvider>
+    </div>
+  );
 }
